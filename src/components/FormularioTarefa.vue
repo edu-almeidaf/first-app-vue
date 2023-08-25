@@ -1,5 +1,5 @@
 <template>
-  <div class="box formulario">
+  <div class="box">
     <div class="columns">
       <div
         class="column is-5"
@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="column">
-        <TemporizadorComponent @aoTemporizadorFinalizado="finalizarTarefa"/>
+        <TemporizadorComponent @aoTemporizadorFinalizado="salvarTarefa"/>
       </div>
     </div>
   </div>
@@ -37,8 +37,7 @@
 <script lang="ts">
   import { computed, defineComponent } from 'vue';
   import TemporizadorComponent from './TemporizadorComponent.vue';
-  import { useStore } from 'vuex';
-  import { key } from '@/store';
+  import { useStore } from '@/store';
 
   export default defineComponent({
     name: "FormularioTarefa",
@@ -53,7 +52,7 @@
       }
     },
     methods: {
-      finalizarTarefa(tempoDecorrido: number): void {
+      salvarTarefa(tempoDecorrido: number): void {
         this.$emit('aoSalvarTarefa', {
           duracaoEmSegundos: tempoDecorrido,
           descricao: this.descricao,
@@ -63,7 +62,7 @@
       }
     },
     setup() {
-      const store = useStore(key);
+      const store = useStore();
       return {
         projetos: computed(() => store.state.projetos)
       }
@@ -72,7 +71,7 @@
 </script>
 
 <style>
-  .formulario {
+  .box {
     color: var(--texto-primario);
     background-color: var(--bg-primario);
   }

@@ -1,6 +1,8 @@
 import { RouteRecordRaw, createRouter, createWebHashHistory } from "vue-router";
 import TarefasView from '../views/TarefasView.vue';
 import ProjetosView from '../views/ProjetosView.vue';
+import FormularioProjetosVue from "@/views/Projetos/FormularioProjetos.vue";
+import ListaComponent from '@/views/Projetos/ListaComponent.vue';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -10,8 +12,24 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: '/projetos',
-    name: 'Projetos',
-    component: ProjetosView
+    component: ProjetosView,
+    children: [
+      {
+        path: '',
+        name: 'Projetos',
+        component: ListaComponent
+      },
+      {
+        path: 'novo',
+        name: 'Novo projeto',
+        component: FormularioProjetosVue
+      },
+      {
+        path: ':id',
+        name: 'Editar projeto',
+        component: FormularioProjetosVue
+      },
+    ]
   }
 ];
 

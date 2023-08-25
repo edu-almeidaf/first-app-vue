@@ -1,10 +1,10 @@
 <template>
   <FormularioTarefa @aoSalvarTarefa="salvarTarefa"/>
   <div class="lista">
-    <TarefaComponent v-for="(tarefa, index) in tarefas" :key="index" :tarefa="tarefa"/>
     <BoxComponent v-if="listaEstaVazia">
       Nenhuma tarefa cadastrada.
     </BoxComponent>
+    <TarefaComponent v-for="(tarefa, index) in tarefas" :key="index" :tarefa="tarefa"/>
   </div>
 </template>
 
@@ -13,7 +13,7 @@ import { defineComponent } from 'vue';
 import FormularioTarefa from '../components/FormularioTarefa.vue';
 import TarefaComponent from '../components/TarefaComponent.vue';
 import BoxComponent from '../components/BoxComponent.vue';
-import { ITarefa } from '../components/interfaces/ITarefa';
+import { ITarefa } from '@/interfaces/ITarefa';
 
 export default defineComponent({
   name: 'TarefasView',
@@ -39,3 +39,4 @@ export default defineComponent({
   },
 });
 </script>
+../interfaces/ITarefa

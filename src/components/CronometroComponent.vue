@@ -18,14 +18,8 @@
     },
     computed: {
       tempoDecorrido () : string {
-        return new Date(this.tempoEmSegundos * 1000).toISOString().substr(11,8)
+        return new Date(this.tempoEmSegundos * 1000).toISOString().substring(11,8)
       }
     },
   })
 </script>
-
-<style scoped>
-  .display {
-    color: var(--texto-primario);
-  }
-</style>
