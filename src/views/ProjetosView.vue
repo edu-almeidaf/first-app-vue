@@ -1,7 +1,7 @@
 <template>
   <section class="projetos">
     <h1 class="title">Projetos</h1>
-    <form @submit.prevent="salvar">
+    <!-- <form @submit.prevent="salvar">
       <div class="field">
         <label for="nomeDoProjeto" class="label">Nome do Projeto</label>
         <input
@@ -14,7 +14,7 @@
       <div class="field">
         <button class="button" type="submit">Salvar</button>
       </div>
-    </form>
+    </form> -->
     <table class="table is-fullwidth mt-5">
       <thead>
         <tr>
@@ -33,27 +33,34 @@
 </template>
 
 <script lang="ts">
-  import { defineComponent } from 'vue';
-  import { IProjeto } from '../components/interfaces/IProjeto';
+  import { defineComponent, computed } from 'vue';
+  import { useStore } from '@/store';
 
   export default defineComponent({
     name: 'ProjetosView',
-    data() {
-      return {
-        nomeDoProjeto: '',
-        projetos: [] as IProjeto[],
-      };
-    },
+    // data() {
+    //   return {
+    //     nomeDoProjeto: '',
+    //   };
+    // },
     methods: {
-      salvar() {
-        const projeto: IProjeto = {
-          nome: this.nomeDoProjeto,
-          id: new Date().toISOString(),
-        };
-        this.projetos.push(projeto);
-        this.nomeDoProjeto = '';
-      },
+      // salvar() {
+      //   // const projeto: IProjeto = {
+      //   //   nome: this.nomeDoProjeto,
+      //   //   id: new Date().toISOString(),
+      //   // };
+      //   // this.projetos.push(projeto);
+      //   this.store.commit('ADICIONA_PROJETO', this.nomeDoProjeto);
+      //   this.nomeDoProjeto = '';
+      // },
     },
+    setup() {
+      const store = useStore();
+      return {
+        // store,
+        projetos: computed(() => store.state.projetos),
+      }
+    }
   });
 </script>
 
