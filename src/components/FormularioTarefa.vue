@@ -2,7 +2,7 @@
   <div class="box formulario">
     <div class="columns">
       <div
-        class="column is-8"
+        class="column is-7"
         role="form"
         aria-label="Formulário para criação de nova tarefa"
       >

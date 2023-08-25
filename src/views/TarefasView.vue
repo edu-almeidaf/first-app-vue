@@ -16,7 +16,7 @@ import BoxComponent from '../components/BoxComponent.vue';
 import { ITarefa } from '../components/interfaces/ITarefa';
 
 export default defineComponent({
-  name: 'App',
+  name: 'TarefasView',
   components: {
     FormularioTarefa,
     TarefaComponent,
@@ -33,8 +33,8 @@ export default defineComponent({
     }
   },
   methods: {
-    salvarTarefa(tarefa: ITarefa) {
-      this.tarefas.push(tarefa)
+    salvarTarefa(tarefa: ITarefa): void {
+      this.tarefas.push(tarefa);
     },
   },
 });

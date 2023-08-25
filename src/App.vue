@@ -1,5 +1,5 @@
 <template>
-  <main class="columns is-gapless is-multiline" :class="{ 'modo-escuro': modoEscuroAtivo }">
+  <main class="columns is-gapless is-multiline" :class="{ 'modo-escuro': modoEscuro }">
     <div class="column is-one-quarter">
       <BarraLateral @aoTemaAlterado="trocarTema"/>
     </div>
@@ -10,25 +10,25 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import BarraLateral from './components/BarraLateral.vue';
+  import { defineComponent } from 'vue';
+  import BarraLateral from './components/BarraLateral.vue';
 
-export default defineComponent({
-  name: 'App',
-  components: {
-    BarraLateral,
-  },
-  data() {
-    return {
-      modoEscuroAtivo: false
-    }
-  },
-  methods: {
-    trocarTema(modoEscuroAtivo: boolean) {
-      this.modoEscuroAtivo = modoEscuroAtivo;
-    }
-  },
-});
+  export default defineComponent({
+    name: 'App',
+    components: {
+      BarraLateral,
+    },
+    data() {
+      return {
+        modoEscuro: false
+      }
+    },
+    methods: {
+      trocarTema(modoEscuro: boolean): void {
+        this.modoEscuro = modoEscuro;
+      }
+    },
+  });
 </script>
 
 <style>
